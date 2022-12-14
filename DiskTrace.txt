@@ -1,0 +1,27 @@
+<#
+Remote server setup script.
+Run one line at a time, under supervision!
+#>
+$REMOTE_SERVER = '192.168.163.134'
+
+# Connect to server-1
+Enter-PSSession $REMOTE_SERVER -Credential "administrator@michael.com"
+
+$ServerName = "win-kf3ve4ta545.michael.com"
+$ServerIPv4 = "192.168.163.134"
+
+<#
+Remote server setup script.
+Does a recce on a remote servers disks
+Run one line at a time, under supervision!
+#>
+$REMOTE_SERVER = '192.168.163.134'
+
+# Connect to server-1
+Enter-PSSession $REMOTE_SERVER -Credential "administrator@michael.com"
+
+Get-Disk | foreach { $_ | Get-StorageReliabilityCounter | Format-List }
+Get-Disk | Get-StorageReliabilityCounter
+Get-PhysicalDisk | sort DeviceID | ft DeviceID, FriendlyName, Model, Mediatype
+
+Exit-PSSession
